@@ -3,7 +3,7 @@
 // ===============================================================================
 var friendsArray = require("../data/friends");
 var path = require("path");
-var result = 0;
+
 
 
 // ===============================================================================
@@ -13,14 +13,14 @@ var result = 0;
 module.exports = function(app) {
   // ---------------------------------------------------------------------------
   app.post("/api/new", function(req, res) {
-
+    var result = 0;
     var newFriend = req.body;
-
     var resultsArr = [];
 
-    for (var j = 0; j < friendsArray.length; j++) {
+    for (var j = 0; j < 10; j++) {
 
       var temp = 0;
+
 
       for (var i = 0; i < (newFriend.score).length; i++) {
 
