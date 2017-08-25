@@ -55,7 +55,7 @@
         <div class="modal-body">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" id="resultsClose">Close</button>
+          <a href="survey"><button type="button" id="resultsClose" class="btn btn-default" data-dismiss="modal">Close</button></a>
         </div>
       </div>
     </div>
@@ -347,8 +347,8 @@
   <script type="text/javascript">
 
 
-    $("#submit").on("click", function(event) {
-
+    $("#submit").one("click", function(event) {
+      event.preventDefault();
 
         var userArr = [];
         for (var i = 1; i < 11; i++) {
@@ -357,8 +357,6 @@
 
               var x = $("[name=question"+i+"]:checked").val();
               x = parseInt(x);
-
-              //I don't know why this remains a string.....
               userArr.push(x);
             };
           };
@@ -378,6 +376,8 @@
                   $('.submitbtn').attr({'data-toggle':'modal', 'data-target':'#myModal'});
 
               }
+
+
               var newFriend = {
                 name: $("#InputName").val().trim(),
                 photo: $("#InputPhoto").val().trim(),
@@ -392,9 +392,19 @@
                   $('.modal-title').html('<h1>You Match with: </h1>' + '<h1>' + data.name + '</h1');
                   $('.modal_photo').attr('src', data.photo);
                   $('.modal-body').html(data.bio);
+                  return;
 
         });
     });
+
+    $("#resultsClose").one("click", function(event){
+      event.preventDefault();
+
+      window.location.href = "/survey";
+
+
+
+    })
 
 
   </script>

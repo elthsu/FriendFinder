@@ -12,39 +12,31 @@ var result = 0;
 
 module.exports = function(app) {
   // ---------------------------------------------------------------------------
-app.post("/api/new", function(req, res) {
+  app.post("/api/new", function(req, res) {
 
-  var newFriend = req.body;
+    var newFriend = req.body;
 
-  var resultsArr = [];
+    var resultsArr = [];
 
-  for (var j = 0; j < friendsArray.length; j++) {
-    var temp = 0;
-  for (var i = 0; i < (newFriend.score).length; i++) {
+    for (var j = 0; j < friendsArray.length; j++) {
 
-    temp += Math.abs((parseInt(newFriend.score[i]) - parseInt((friendsArray[j].scores[i]))));
+      var temp = 0;
 
-  }
+      for (var i = 0; i < (newFriend.score).length; i++) {
 
-  resultsArr.push(parseInt(temp));
+        temp += Math.abs(parseInt(newFriend.score[i]) - parseInt(friendsArray[j].scores[i]));
+      }
+      resultsArr.push(parseInt(temp));
+    }
 
-  }
+    friendsArray.push(newFriend);
 
-  friendsArray.push(newFriend);
-
-  results = Math.min.apply(null, resultsArr);
-  results = resultsArr.indexOf(results);
-
+    results = Math.min.apply(null, resultsArr);
+    results = resultsArr.indexOf(results);
 
     // We then display the JSON to the users
-  res.json(friendsArray[results]);
-});
+    res.json(friendsArray[results]);
 
-
-
-
-
-
-  // ---------------------------------------------------------------------------
+  });
 
 };
