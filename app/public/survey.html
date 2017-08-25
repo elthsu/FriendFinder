@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Cardo', serif;
+    }
+    h1,
+    h2 {
+      text-align: center;
+    }
+    body,
+    .modal-open,
+    .modal-close {
+    padding-right: 0px !important;
+  }
+  </style>
+  <title>Westeros Friend Finder</title>
+</head>
+<body>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Error</h2>
+        </div>
+        <div class="modal-body">
+          <h3>You didn't answer all the questions.</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModalResults" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="myModalLabel"></h2>
+        </div>
+        <img class="modal_photo" src='' width=100%>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="resultsClose">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class='container'>
+    <div class='row'>
+        <div class='jumbotron col-lg-12 text-center'>
+
+        <img src="http://wallpapercave.com/wp/0nH3MIt.png" width=100%>
+        <h1>Westeros Friend Finder</h1>
+        <h2>Survey</h2>
+        </div>
+    </div>
+
+    <div class='row'>
+
+      <div class='col-lg-12 text-center'>
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="exampleInputName2">Name</label>
+            <input type="text" class="form-control" id="InputName" placeholder="Jane Doe" required="required">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail2">Photo</label>
+            <input type="text" class="form-control" id="InputPhoto" placeholder="link to photo" required="required">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail2">Bio</label>
+            <input type="text" class="form-control" id="InputBio" placeholder="Something about you" required="required">
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <div class='row'>
+        <div class='col-lg-3 text-center'>
+        </div>
+        <div class='col-lg-6 text-center'>
+        <h3>1: Strongly Disagree, 5: Strongly Agree</h3>
+        </div>
+        <div class='col-lg-3 text-center'>
+        </div>
+    </div>
+
+
+    <div class='row'>
+
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 1: Seeing the color red makes you angry.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question1" id="inlineRadio1" value=1 required="required"> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question1" id="inlineRadio2" value=2> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question1" id="inlineRadio3" value=3> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question1" id="inlineRadio4" value=4> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question1" id="inlineRadio5" value=5> 5
+        </label>
+        </div>
+
+    </div>
+    <div class='row'>
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 2: You like to cuddle up next to the fireplace instead of sunbathing on the beach.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question2" id="inlineRadio1" value="1" required="required"> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question2" id="inlineRadio2" value="2"> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question2" id="inlineRadio3" value="3"> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question2" id="inlineRadio4" value="4"> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question2" id="inlineRadio5" value="5"> 5
+        </label>
+        </div>
+
+
+  </div>
+  <div class='row'>
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 3: You enjoy a glass of wine.....or 10.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question3" id="inlineRadio1" value="1" required> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question3" id="inlineRadio2" value="2"> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question3" id="inlineRadio3" value="3"> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question3" id="inlineRadio4" value="4"> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question3" id="inlineRadio5" value="5"> 5
+        </label>
+        </div>
+
+  </div>
+  <div class='row'>
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 4: The tongue is mightier than the sword.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question4" id="inlineRadio1" value="1" required> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question4" id="inlineRadio2" value="2"> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question4" id="inlineRadio3" value="3"> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question4" id="inlineRadio4" value="4"> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question4" id="inlineRadio5" value="5"> 5
+        </label>
+        </div>
+
+  </div>
+  <div class='row'>
+
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 5: Ruling a kingdom of ashes is pointless.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question5" id="inlineRadio1" value="1" required> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question5" id="inlineRadio2" value="2"> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question5" id="inlineRadio3" value="3"> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question5" id="inlineRadio4" value="4"> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question5" id="inlineRadio5" value="5"> 5
+        </label>
+        </div>
+
+  </div>
+  <div class='row'>
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 6: I rather have the last word than the first.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question6" id="inlineRadio1" value="1" required> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question6" id="inlineRadio2" value="2"> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question6" id="inlineRadio3" value="3"> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question6" id="inlineRadio4" value="4"> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question6" id="inlineRadio5" value="5"> 5
+        </label>
+        </div>
+
+  </div>
+  <div class='row'>
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 7: Birthright is everything.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question7" id="inlineRadio1" value="1" required> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question7" id="inlineRadio2" value="2"> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question7" id="inlineRadio3" value="3"> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question7" id="inlineRadio4" value="4"> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question7" id="inlineRadio5" value="5"> 5
+        </label>
+        </div>
+
+  </div>
+  <div class='row'>
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 8: Never forget what you are, for surely the world will not.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question8" id="inlineRadio1" value="1" required> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question8" id="inlineRadio2" value="2"> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question8" id="inlineRadio3" value="3"> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question8" id="inlineRadio4" value="4"> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question8" id="inlineRadio5" value="5"> 5
+        </label>
+        </div>
+
+
+  </div>
+  <div class='row'>
+
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 9: I would do anything for love.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question9" id="inlineRadio1" value="1" required> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question9" id="inlineRadio2" value="2"> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question9" id="inlineRadio3" value="3"> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question9" id="inlineRadio4" value="4"> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question9" id="inlineRadio5" value="5"> 5
+        </label>
+        </div>
+
+  </div>
+  <div class='row'>
+
+        <div class='col-lg-12 text-center'>
+        <h3>Questions 10: My honor is more important than my name.</h3>
+        <label class="radio-inline">
+          <input type="radio" name="question10" id="inlineRadio1" value="1" required> 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question10" id="inlineRadio2" value="2" required> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question10" id="inlineRadio3" value="3" required> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question10" id="inlineRadio4" value="4"required> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="question10" id="inlineRadio5" value="5" required> 5
+        </label>
+        </div>
+
+
+    </div>
+    <br />
+    <div class='row'>
+      <div class='col-lg-12 text-center'>
+        <button type="button" class="btn btn-primary submitbtn" id="submit">SUBMIT</button>
+      </div>
+    </div>
+  <br />
+  <br />
+
+
+  </div>
+
+  <script type="text/javascript">
+
+
+    $("#submit").on("click", function(event) {
+
+
+        var userArr = [];
+        for (var i = 1; i < 11; i++) {
+
+          if ($("[name=question"+i+"]:checked").val() !== undefined) {
+
+              var x = $("[name=question"+i+"]:checked").val();
+              x = parseInt(x);
+
+              //I don't know why this remains a string.....
+              userArr.push(x);
+            };
+          };
+
+              console.log(userArr);
+              if (userArr.length === 10) {
+
+                    // window.location = "/survey";
+                    $('.submitbtn').attr({'data-toggle':'modal', 'data-target':'#myModalResults'});
+
+              }
+
+              else if ((userArr.length < 10))
+
+              {
+
+                  $('.submitbtn').attr({'data-toggle':'modal', 'data-target':'#myModal'});
+
+              }
+              var newFriend = {
+                name: $("#InputName").val().trim(),
+                photo: $("#InputPhoto").val().trim(),
+                score: userArr,
+                bio: $("#InputBio").val().trim()
+              };
+
+
+              $.post("/api/new", newFriend)
+                .done(function(data) {
+
+                  $('.modal-title').html('<h1>You Match with: </h1>' + '<h1>' + data.name + '</h1');
+                  $('.modal_photo').attr('src', data.photo);
+                  $('.modal-body').html(data.bio);
+
+        });
+    });
+
+
+  </script>
+
+
+</body>
+</html>
